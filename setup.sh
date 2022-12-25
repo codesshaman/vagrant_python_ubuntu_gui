@@ -35,6 +35,8 @@ Categories=System
 NoDiplay=false
 EOF
 
+echo "[Python] : install python3.11..."
+
 su - vagrant -c "sudo add-apt-repository -y ppa:deadsnakes/ppa"
 
 su - vagrant -c "sudo apt update && sudo apt install -y python3.11"
@@ -43,7 +45,17 @@ echo "[Python] : change default version..."
 
 su - vagrant -c "sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 110"
 
+echo "[Python] : install pip..."
+
+su - vagrant -c "sudo apt install -y python3-pip"
+
+echo "[Python] : install pyqt..."
+
+su - vagrant -c "pip3 install PyQt6"
+
 su - vagrant -c "python3 --version"
+
+su - vagrant -c "pip3 --version"
 
 ### Wbox Guest Addition
 ### Install for clipboard
