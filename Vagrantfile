@@ -4,15 +4,6 @@
 IP =  "192.168.58.98"   # Don't change!
 CPU_CORES_COUNT = "4"   # Cnahge if necessary
 MEMORY_COUNT = "8192"   # Cnahge if necessary
-GUEST_ADDITIONS = " "   # Past yor vbox guest
-                        # additions (depends
-                        # on vbox version*)
-# *Take guest additions here for your vbox:
-# http://download.virtualbox.org/virtualbox/
-
-## Cnage this link if necessary (if not work)
-
-PYTHON_SRC = "https://www.python.org/ftp/python/3.11.1/Python-3.11.1.tar.xz"
 
 # create machines config
 Vagrant.configure(2) do |config|
@@ -32,13 +23,13 @@ Vagrant.configure(2) do |config|
         "/home/vagrant/project"
         ubuntu.vm.hostname = "ubuntu-python"
         ubuntu.vm.provision "shell",
-        privileged: true, path: "setup.sh",
-        args: [PYTHON_SRC, GUEST_ADDITIONS]
+        privileged: true, path: "setup.sh"
         ubuntu.vm.provider "virtualbox" do |v|
             v.customize ["modifyvm", :id, "--vram", "32"]
             v.name = "ubuntu_python"
             v.memory = MEMORY_COUNT
             v.cpus = CPU_CORES_COUNT
+            v.gui = true
         end
     end
 
