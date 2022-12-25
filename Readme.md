@@ -6,52 +6,45 @@ Your need install [vagrant](https://github.com/hashicorp/vagrant-installers/rele
 
 ### Step 1
 
-Download box bento/debian-11 for virtualbox from [vagrantup](https://app.vagrantup.com/bento/boxes/debian-11.5 "vagrantup").
+Download box bento/ubuntu-22.04 for virtualbox from [vagrantup](https://app.vagrantup.com/bento/boxes/ubuntu-22.04 "vagrantup").
 
 ### Step 2
 
 Clonr this repository: 
 
-``git clone https://github.com/codesshaman/vagrant_python_debian_gui.git``
+``git clone https://github.com/codesshaman/vagrant_python_ubuntu_gui.git``
 
 ### Step 3
 
-Copy/move box and named it "debian". In the terminal go inside the repository folder:
+Copy/move box and named it "ubuntu". In the terminal go inside the project folder:
 
-``cp ~/Downloads/a2a5f4df-eba7-4c0c-88e4-7ff6d02d5ada path_to/vagrant_python_debian_gui/debian``
+``cp ~/Downloads/3bb5d30a-67c6-43a4-b3e5-56b24b604656 path_to/vagrant_python_ubuntu_gui/ubuntu``
 
-``cd vagrant_python_debian_gui``
+``cd vagrant_python_ubuntu_gui/project``
 
 ### Step 4
-
-Copy link to your version of virtualbox guest additions from website
-
-``http://download.virtualbox.org/virtualbox/``
-
-and past to Vagrantfile in the GUEST_ADDITIONS variable.
-
-Copy link to your project git in the GIT variable (not required, you can clone your repository after vm building).
-
-### Step 5
 
 Clone your project into "project" folder
 
 Example:
 
-``git clone https://gitlab.school/your_project_repo.git -b develop project/myproject``
+``git clone https://gitlab.school/your_project_repo.git -b develop <myproject>``
 
+### Step 5
 
-### Step 6
+Up to vagrant_python_ubuntu_gui folder and init configuration:
+
+``cd ..``
 
 Inicialize configuration:
 
-``vagrant box add bento/debian-11.5 debian``
+``vagrant box add bento/ubuntu-22.04 ubuntu``
 
 or with make:
 
 ``make build``
 
-### Step 7
+### Step 6
 
 Install configuration:
 
@@ -61,9 +54,13 @@ or with make:
 
 ``make``
 
+### Step 7
+
+reboot virtual machine and login with login and password "vagrant".
+
 ### Step 8
 
-Connect:
+Connect to VM from terminal:
 
 ``ssh vagrant@192.168.58.93``
 
@@ -71,28 +68,17 @@ or with make:
 
 ``make connect``
 
-### Step 9
-
-Start GUI in virtualbox windows:
-
-Login and password: vagrant:vagrant
-
-Launch GUI:
-
-``sudo startx``
-
 ## Howto use this configuration?
 
-First way: your IDE
+1. Open external folder "<myproject>" or "<myproject>/src" in Pycharm
+2. Use VM for project creation and external project folder for use git
 
-1. Open external folder "project" or "project/src" in Pycharm or different IDE.
-2. Write code in your IDE.
-3. Launch code in GUI using kitty terminal.
+Start: ``vagrant up`` or ``make``
 
-Second way: full diving
+Stop: ``vagrant halt`` or ``make down``
 
-1. Open VM window
-2. Open "kitty" terminal
-3. Write "pycharm" and press Enter
-4. Configure and use pycharm CE inside of VM
-3. Use VM for project creation and external project folder for git
+Restart: ``vagrant reload`` or ``make re``
+
+Hybernation: ``vagrant suspend``
+
+Delete VM: ``vagrant destroy`` or ``make clean``
