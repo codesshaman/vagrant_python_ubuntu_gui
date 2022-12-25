@@ -45,7 +45,6 @@ su - vagrant -c "sudo apt update && sudo apt install -y \
 slim \
 snapd \
 xinit \
-kitty \
 xdg-utils \
 lxsession \
 python3.11 \
@@ -56,27 +55,28 @@ xserver-xorg-core"
 
 # systemctl enable lxdm
 
+cp /home/vagrant/project/pycharm.png /usr/share/icons/pycharm.ico
+
 su - vagrant -c "python3 --version"
 
-su - vagrant -c "pip install PyQt6"
+su - vagrant -c "pip3 install PyQt6"
 
 su - vagrant -c "sudo snap install pycharm-community --classic"
 
-
 su - vagrant -c "sudo apt install -y qttools5-dev"
 
+cat << EOF > /usr/share/applications/pycharm.desktop
 [Desktop Entry]
-Name=Имя ярлыка
-Comment=Запускаем свое приложение в терминале
-GenericName=Запускаем свое приложение в терминале
-Keywords=Мой скрипт
-Exec=/usr/bin/gnome-terminal -e /home/user/script.sh
+Name=Pycharm
+Comment=Best IDE for python
+Keywords=pycharm
+Exec=pycharm-community
 Terminal=false
 Type=Application
-Icon=/usr/share/pixmaps/faces/dice.jpg
-Categories=
-Path=
+Icon=/usr/share/icons/pycharm.ico
+Categories=System
 NoDiplay=false
+EOF
 
 ## Install all necessary packages
 
