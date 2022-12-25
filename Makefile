@@ -41,9 +41,9 @@ down:
 	@printf "$(ERROR_COLOR)==== Stopping configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant halt
 
-re:	down
+re:
 	@printf "$(OK_COLOR)==== Restart configuration ${name}... ====$(NO_COLOR)\n"
-	@vagrant up --provider=virtualbox
+	@vagrant reload
 
 ps:
 	@printf "$(BLUE)==== View configuration ${name}... ====$(NO_COLOR)\n"
