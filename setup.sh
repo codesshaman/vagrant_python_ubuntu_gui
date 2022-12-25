@@ -8,7 +8,6 @@ snapd \
 xinit \
 xdg-utils \
 lxsession \
-python3.11 \
 libnotify4 \
 qttools5-dev \
 xserver-xorg-core"
@@ -30,13 +29,19 @@ Comment=Best IDE for python
 Keywords=pycharm
 Exec=pycharm-community
 Terminal=false
-Type=System
+Type=Application
 Icon=/usr/share/icons/pycharm.ico
 Categories=System
 NoDiplay=false
 EOF
 
+su - vagrant -c "sudo add-apt-repository -y ppa:deadsnakes/ppa"
+
+su - vagrant -c "sudo apt update && sudo apt install -y python3.11"
+
 echo "[Python] : change default version..."
+
+su - vagrant -c "sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 110"
 
 su - vagrant -c "python3 --version"
 
