@@ -20,6 +20,10 @@ Copy/move box and named it "ubuntu". In the terminal go inside the project folde
 
 ``cp ~/Downloads/3bb5d30a-67c6-43a4-b3e5-56b24b604656 path_to/vagrant_python_ubuntu_gui/ubuntu``
 
+or
+
+``mv 3bb5d30a-67c6-43a4-b3e5-56b24b604656 vagrant_python_ubuntu_gui/ubuntu``
+
 ``cd vagrant_python_ubuntu_gui/project``
 
 ### Step 4
