@@ -49,6 +49,12 @@ ps:
 	@printf "$(BLUE)==== View configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant status
 
+path:
+	@printf "$(YELLOW)==== Change path for ${name}... ====$(NO_COLOR)\n"
+	@export VAGRANT_HOME=".vagrantboxes"
+	@mkdir .vagrantboxes
+	@printf "$(OK_COLOR)==== Pas has been changing ====$(NO_COLOR)\n"
+
 clean: down
 	@printf "$(ERROR_COLOR)==== Destroy configuration ${name}... ====$(NO_COLOR)\n"
 	@vagrant destroy
@@ -57,4 +63,4 @@ fclean:
 	@printf "$(ERROR_COLOR)==== Force destroy configurations ====$(NO_COLOR)\n"
 	@vagrant destroy --force
 
-.PHONY	: all help build down re ps clean fclean
+.PHONY	: all help build down re ps path clean fclean
